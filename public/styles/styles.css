@@ -1,0 +1,54 @@
+
+.brand-logo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+body, html {
+    height: 100%;
+    margin: auto;
+}
+  
+#appb {
+    background-image: url("/imgs/backgroundwork.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+#appa{
+    background-image: url("/imgs/black_back.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+#home_logo{
+    width: 64px;
+}
+
+#home-text{
+    padding-top: 80px;
+    padding-right: 165px;
+}
+
+.home-headers{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#me_pic{
+    width: 250px;
+}
+
+#side-div{
+    padding-top: 50px;
+}
+
+#work_head{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+

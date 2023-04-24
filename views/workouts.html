@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerobic Fit</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <div id = "appa">
+    
+        <nav>
+        <div class="nav-wrapper black">
+            <img id = "home_logo" src = "home_logo.jpg">
+            <a href="index.html" class="brand-logo center">Aerobic Fit</a>
+            <ul class="right">
+                <li><a href="/" class = "deep-orange-text text-accent-3"><i class="material-icons left">home</i> Home</a></li>
+                <li><a href="/workouts"class = "deep-orange-text text-accent-3" ><i class="material-icons left">assignment</i> Your Workouts</a></li>
+                <li><a href = "/profiles"class = "deep-orange-text text-accent-3"><i class = "material-icons left">person_pin</i> Profile </a></li>
+                <li><a href = "/plans"class = "deep-orange-text text-accent-3"><i class = "material-icons left">call_to_action</i> Workout Plan AI </a></li>
+            </ul>
+        </div>
+        </nav>
+    
+
+    <div class = "center-align">
+        <div class="section white-text blue-grey darken-1" id="list">
+            <h1 id = "work_head" class = "lime-text text-accent-3">Workouts</h1>
+            <table class = "highlight centered">
+                <thead class = "red-text text-accent-3">
+                    <tr>
+                        <th>Name</th>
+                        <th>Length</th>
+                        <th>Muscle/Target</th>
+                        <th>Intensity</th>
+                        <th> Sets: Reps</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pushups</td>
+                        <td>5 mins</td>
+                        <td>Triceps/Shoulders</td>
+                        <td>5</td>
+                        <td> 3:15</td>
+                        <td>
+                            <a class="btn-small waves-effect waves-light amber" href="/detail">
+                                <i class="material-icons right">edit</i>
+                                Info/Edit
+                            </a>
+                            <a class="btn-small waves-effect waves-light deep-purple">
+                                <i class="material-icons right">delete</i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Leg Press</td>
+                        <td>10 mins</td>
+                        <td>Quadriceps</td>
+                        <td>7</td>
+                        <td>4:12</td>
+                        <td>
+                            <a class="btn-small waves-effect waves-light amber" href="/detail">
+                                <i class="material-icons right">edit</i>
+                                Info/Edit
+                            </a>
+                            <a class="btn-small waves-effect waves-light deep-purple">
+                                <i class="material-icons right">delete</i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Mile Walk</td>
+                        <td>60 mins</td>
+                        <td>Hamstring/Quadriceps</td>
+                        <td>2</td>
+                        <td>5: n/a </td>
+                        <td>
+                            <a class="btn-small waves-effect waves-light amber" href="/detail">
+                                <i class="material-icons right">edit</i>
+                                Info/Edit
+                            </a>
+                            <a class="btn-small waves-effect waves-light deep-purple">
+                                <i class="material-icons right">delete</i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <a class="btn-small waves-effect waves-light green modal-trigger" href = "#add"> Add Workout </a>
+        <div class = "modal green lighten-4" id = "add">
+            <div class="modal-content">
+                <h3>Add Workout</h3>
+                <form id="updateForm">
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <i class="material-icons prefix black-text">merge_type</i>
+                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="Name of Workout">
+                            <label for="titleInput">Workout Name</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <i class="material-icons prefix black-text">create</i>
+                            <input type="text" id="priorityInput" name="priority" class="validate" min=1 max=10 value= "x mins">
+                            <label for="priorityInput">Length</label>
+                        </div>
+    
+                        <div class="input-field col s6">
+                            <select type="number" id="subjectInput" name="Intensity">
+                                <option value="" disabled>Intensity</option>
+                                <option value=1 selected>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                                <option value=6>6</option>
+                                <option value=7>7</option>
+                                <option value=8>8</option>
+                                <option value=9>9</option>
+                                <option value=10>10</option>
+                              </select>
+                              <label for="subjectInput">Intensity</label>
+                        </div>
+    
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix black-text">chevron_right</i>
+                            <input type="text" id="repInput" name="setsreps" value="sets:reps">  
+                            <label for="priorityInput">Sets:Reps</label>
+                        </div>
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix black-text">create</i>
+                            <textarea class="materialize-textarea" id="descriptionInput" name="description" data-length="150">What would you like to share about this workout (directions, materials, suggestions, etc) ? </textarea>
+                            <label for="descriptionInput">Detailed Description:</label>
+                        </div>
+    
+                    </div>
+                </form>
+                
+                <div class="modal-footer">
+                    
+                    <button class="btn waves-effect waves-light " type="submit" form="updateForm">
+                        <i class="material-icons right">send</i>
+                        Submit
+                    </button>
+                    <button class="modal-close waves-effect waves-green btn-flat" > Cancel </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src = "/js/script.js"></script>
+    
+</body>
+</html>

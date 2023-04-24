@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerobic Fit</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <div id = "appa">
+    
+        <nav>
+        <div class="nav-wrapper black">
+            <img id = "home_logo" src = "/imgs/home_logo.jpg">
+            <a href="/" class="brand-logo center">Aerobic Fit</a>
+            <ul class="right">
+                <li><a href="/" class = "deep-orange-text text-accent-3 "><i class="material-icons left">home</i> Home</a></li>
+                <li><a href="/workouts" class = "deep-orange-text text-accent-3 " ><i class="material-icons left">assignment</i> Your Workouts</a></li>
+                <li><a href = "/profiles" class = "deep-orange-text text-accent-3 "><i class = "material-icons left">person_pin</i> Profile </a></li>
+                <li><a href = "/plans" class = "deep-orange-text text-accent-3 "><i class = "material-icons left">call_to_action</i> Workout Plan AI</a></li>
+            </ul>
+        </div>
+        </nav>
+        <div class = "white-text">
+            <div class="section white-text blue-grey darken-1 center-align" id="list">
+                <h1 id = "work_head" class = "lime-text text-accent-3">Profile</h1>
+                <table class = "highlight centered">
+                    <thead class = "red-text text-accent-3">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Username</td>
+                            <td>Password</td>
+                            <td> Height : Weight</td>
+                            <td> Date of Birth</td>
+                        </tr>
+                        <tr>
+                            <td> ibrahimwichka06 </td>
+                            <td> ******** </td>
+                            <td> 0' 0" : 0 lbs</td>
+                            <td> 12/13/2006 </td>
+                            <td>
+                                <a class="btn-small waves-effect waves-light amber modal-trigger" href="#modal1">
+                                    <i class="material-icons right">edit</i>
+                                    Info/Edit
+                                </a>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class = "modal amber lighten-3 bottom-sheet" id = "modal1">
+                    <div class="modal-content">
+                        <h3 class = "black-text">Edit Profile</h3>
+                        <form id="updateForm">
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <i class="material-icons prefix black-text">person</i>
+                                    <input type="text" id="titleInput" name="title" class="validate" data-length="45" value="ibrahimwichka06">
+                                    <label for="titleInput">Username</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <i class = "material-icons prefix black-text">format_color_text</i>
+                                    <input type="text" id="priorityInput" name="pw" class="validate" value= "********">
+                                    <label for="priorityInput">Password</label>
+                                </div>
+            
+                                <div class="input-field col s6">
+                                    <i class = "material-icons prefix black-text">grade</i>
+                                    <input type="text" id="priorityInput" name="0' 0" class="validate" value= "0'0: 0 lbs">
+                                    <label for="subjectInput">Height: Wight</label>
+                                </div>
+            
+                                <div class="input-field col s6">
+                                    <i class = "material-icons prefix black-text">date_range</i>
+                                    <input type="date" id="dueDateInput" name="dueDate" value="2023-05-26">  <!-- Note that the date value format is "yyyy-mm-dd" -->
+                                    <label for="dueDateInput">Date of Birth</label>
+                                </div>
+        
+                                
+            
+                            </div>
+                        </form>
+                        <!-- A section for the footer of the modal -->
+                        <div class="modal-footer">
+                            <!-- Since the submit button is not within the form, it must have the form attribute specified-->
+                            <button class="btn waves-effect waves-light " type="submit" form="updateForm">
+                                <i class="material-icons right">send</i>
+                                Submit
+                            </button>
+                            <button class="modal-close waves-effect waves-green btn-flat" > Cancel </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src = "/js/script.js"></script>
+    
+</body>
+</html>

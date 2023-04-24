@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerobic Fit</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <div id = "appa">
+    
+        <nav>
+        <div class="nav-wrapper black">
+            <img id = "home_logo" src = "/imgs/home_logo.jpg">
+            <a href="/" class="brand-logo center">Aerobic Fit</a>
+            <ul class="right">
+                <li><a href="/" class = "deep-orange-text text-accent-3"><i class="material-icons left">home</i> Home</a></li>
+                <li><a href="/workouts"class = "deep-orange-text text-accent-3" ><i class="material-icons left">assignment</i> Your Workouts</a></li>
+                <li><a href = "/profiles"class = "deep-orange-text text-accent-3"><i class = "material-icons left">person_pin</i> Profile </a></li>
+                <li><a href = "/plans"class = "deep-orange-text text-accent-3"><i class = "material-icons left">call_to_action</i> Workout Plan </a></li>
+            </ul>
+        </div>
+        </nav>
+        <div class = "center-align">
+            <div class="white-text">
+                <div class="section flow-text grey darken-2" id="details">
+                    <h1 id = "work_head" class = "lime-text text-accent-3">Pushups</h1>
+                    
+                    <table class = "highlight centered">
+                        <tr>
+                            <th class = "red-text text-accent-3">Length</th>
+                            <td>5 mins</td>
+                        </tr>
+                        <tr>
+                            <th class = "red-text text-accent-3">Muscle/Target</th>
+                            <td>Triceps/Shoulders</td>
+                        </tr>
+                        <tr>
+                            <th class = "red-text text-accent-3">Intensity</th>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <th class = "red-text text-accent-3">Sets:Reps</th>
+                            <td> 3:15 </td>
+                        </tr>
+                        <tr>
+                            <th class = "red-text text-accent-3"> Description </th>
+                            <td> This is the description for pushups :)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <a class="btn-large waves-effect waves-light amber modal-trigger" href="#edit">
+                <i class="material-icons right">edit</i>
+                Edit
+            </a>
+            <a class="btn-large waves-effect waves-light purple ">
+                <i class="material-icons right">delete</i>
+                Delete
+            </a>
+            <div class="modal amber lighten-3" id="edit">
+                <div class="modal-content">
+                    <h3>Edit item:</h3>
+                    <form id="updateForm">
+                        <div class="row">
+                            <div class="input-field col s8">
+                                <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="Pushups">
+                                <label for="titleInput">Workout Name</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <input type="text" id="priorityInput" name="priority" class="validate" min=1 max=10 value= "5 mins">
+                                <label for="priorityInput">Length</label>
+                            </div>
+        
+                            <div class="input-field col s6">
+                                <select type="number" id="subjectInput" name="Intensity">
+                                    <option value="" disabled>Intensity</option>
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
+                                    <option value=5 selected>5</option>
+                                    <option value=6>6</option>
+                                    <option value=7>7</option>
+                                    <option value=8>8</option>
+                                    <option value=9>9</option>
+                                    <option value=10>10</option>
+                                  </select>
+                                  <label for="subjectInput">Intensity</label>
+                            </div>
+        
+                            <div class="input-field col s6">
+                                <input type="text" id="repInput" name="setsreps" value="3:15">  
+                                <label for="priorityInput">Sets:Reps</label>
+                            </div>
+    
+                            <div class="input-field col s12">
+                                <textarea class="materialize-textarea" id="descriptionInput" name="description" data-length="150"> This is the description for pushups </textarea>
+                                <label for="descriptionInput">Detailed Description:</label>
+                            </div>
+        
+                        </div>
+                    </form>
+                    
+                    <div class="modal-footer">
+                        
+                        <button class="btn waves-effect waves-light " type="submit" form="updateForm">
+                            <i class="material-icons right">send</i>
+                            Submit
+                        </button>
+                        <button class="modal-close waves-effect waves-green btn-flat" > Cancel </button>
+                    </div>
+                    
+                </div>
+    
+            </div>
+        </div>
+            
+
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    <script src = "/js/script.js"></script>
+    
+</body>
+</html>
