@@ -49,14 +49,14 @@ db.execute(insert_users_sql, [5, "therealrock", "7 2", "#", "200 lbs", null]);
 
 const insert_workouts_sql = `
     INSERT INTO Workouts
-        (workout_id, workout_name, workout_length, workout_intensity, workout_setsreps, muscle_id)
+        (workout_id, workout_name, workout_length, workout_intensity, workout_setsreps, muscle_id, workout_description)
     VALUES
-        (?, ?, ?, ?, ?, ?);
+        (?, ?, ?, ?, ?, ?, ?);
 `
-db.execute(insert_workouts_sql, [1, "Pushups", "5 mins", 5, "3:15", 1]);
-db.execute(insert_workouts_sql, [2, "Leg Press", "10 mins", 7, "4:12", 2]);
-db.execute(insert_workouts_sql, [3, "Mile Walk", "60 mins", 2, "5:n/a", 3]);
-db.execute(insert_workouts_sql, [4, "Pull Ups", "5 mins", 5, "3:8", 6]);
+db.execute(insert_workouts_sql, [1, "Pushups", "5 mins", 5, "3:15", 1, "COOL"]);
+db.execute(insert_workouts_sql, [2, "Leg Press", "10 mins", 7, "4:12", 2, "Really COOl"]);
+db.execute(insert_workouts_sql, [3, "Mile Walk", "60 mins", 2, "5:n/a", 3, "Boring"]);
+db.execute(insert_workouts_sql, [4, "Pull Ups", "5 mins", 5, "3:8", 6, "Fun"]);
 
 const insert_xref_sql = `
     INSERT INTO user_workout_xref

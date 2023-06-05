@@ -44,59 +44,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Pushups</td>
-                        <td>5 mins</td>
-                        <td>Triceps/Shoulders</td>
-                        <td>5</td>
-                        <td> 3:15</td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light amber" href="/detail">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light deep-purple">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Leg Press</td>
-                        <td>10 mins</td>
-                        <td>Quadriceps</td>
-                        <td>7</td>
-                        <td>4:12</td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light amber" href="/detail">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light deep-purple">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Mile Walk</td>
-                        <td>60 mins</td>
-                        <td>Hamstring/Quadriceps</td>
-                        <td>2</td>
-                        <td>5: n/a </td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light amber" href="/detail">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light deep-purple">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
+                    <% for (let i = 0; i < workouthome.length; i++) { %>
+                        <tr>
+                            <td><%= workouthome[i].workout_name %></td>
+                            <td><%= workouthome[i].workout_length %></td>
+                            <td><%= workouthome[i].muscle_name %></td>
+                            <td><%= workouthome[i].workout_intensity %></td>
+                            <td><%= workouthome[i].workout_setsreps %></td>
+                            <td>
+                                <a class="btn-small waves-effect waves-light amber" href="/workouts/<%= workouthome[i].workout_id %>">
+                                    <i class="material-icons right">edit</i>
+                                    Info/Edit
+                                </a>
+                                <a class="btn-small waves-effect waves-light deep-purple">
+                                    <i class="material-icons right">delete</i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        <% } %>
                 </tbody>
             </table>
         </div>
@@ -114,14 +80,14 @@
                         </div>
                         <div class="input-field col s4">
                             <i class="material-icons prefix black-text">create</i>
-                            <input type="text" id="priorityInput" name="priority" class="validate" min=1 max=10 value= "x mins">
+                            <input type="text" id="priorityInput" name="priority" class="validate" min=1 max=10 value= "Length of Workout ">
                             <label for="priorityInput">Length</label>
                         </div>
     
                         <div class="input-field col s6">
                             <select type="number" id="subjectInput" name="Intensity">
                                 <option value="" disabled>Intensity</option>
-                                <option value=1 selected>1</option>
+                                <option value=1 selected <% if (workouthome.workout_intensity == 1) { %> selected <% } %>>1</option>
                                 <option value=2>2</option>
                                 <option value=3>3</option>
                                 <option value=4>4</option>
@@ -137,14 +103,14 @@
     
                         <div class="input-field col s6">
                             <i class="material-icons prefix black-text">chevron_right</i>
-                            <input type="text" id="repInput" name="setsreps" value="sets:reps">  
+                            <input type="text" id="repInput" name="setsreps" value="Sets & Reps">  
                             <label for="priorityInput">Sets:Reps</label>
                         </div>
 
                         <div class="input-field col s12">
                             <i class="material-icons prefix black-text">create</i>
                             <textarea class="materialize-textarea" id="descriptionInput" name="description" data-length="150">What would you like to share about this workout (directions, materials, suggestions, etc) ? </textarea>
-                            <label for="descriptionInput">Detailed Description:</label>
+                            <label for="descriptionInput"></label>
                         </div>
     
                     </div>

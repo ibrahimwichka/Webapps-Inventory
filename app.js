@@ -6,8 +6,8 @@ const port = 3000
 const DEBUG = true;
 const db = require("./db/db_connection");
 
-app.set("views", __dirname + "/views")
-app.set("view engine", "ejs")
+app.set( "views",  __dirname + "/views");
+app.set( "view engine", "ejs" );
 
 app.use(logger("dev"))
 app.use(express.static(__dirname + '/public'))
@@ -19,16 +19,36 @@ app.get("/", (req,res) => {
     res.render('index')
 });
 
-app.get("/detail", (req,res) => {
-    res.sendFile(__dirname + "/views/detail.html");
+const read_workouts_detail_all_sql = `
+    SELECT *
+    FROM Workouts
+    JOIN Muscles
+        ON Workouts.muscle_id = Muscles.muscle_id
+    WHERE workout_id = ?
+`
+
+app.get("/workouts/:id", (req,res, next) => {
+    db.execute(read_workouts_detail_all_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error);
+        else if (results.length == 0)
+            res.status(404).send(`No workout found with id = "${req.params.id}"` );
+        else {
+            
+            let data = {workout: results[0]};
+            res.render('detail', data); 
+        }
+    });
 });
 
 app.get("/plans", (req,res) => {
-    res.sendFile(__dirname + "/views/plans.html");
+    res.render('plans')
 });
 
 app.get("/profiles", (req,res) => {
-    res.sendFile(__dirname + "/views/profiles.html");
+    res.render('profiles')
 });
 
 
@@ -51,8 +71,8 @@ app.get("/workouts", (req,res) => {
             res.status(500).send(error)
         }
         else {
-            let data = {work: results[0]}
-            res.render("workouts", data)
+            let data = { workouthome : results };
+            res.render('workouts', data);
         }
     })
 });

@@ -38,6 +38,7 @@ const create_workouts_table_sql = `
     workout_intensity INT(11) NULL,
     workout_setsreps VARCHAR(45) NULL,
     muscle_id INT(11) NULL,
+    workout_description VARCHAR(45) NULL,
     PRIMARY KEY (workout_id),
     INDEX workoutsMuscles_idx (muscle_id ASC),
         CONSTRAINT workoutsMuscles
