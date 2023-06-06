@@ -24,7 +24,7 @@ db.execute(drop_muscles_table_sql)
 
 const create_muscle_table_sql = `
     CREATE TABLE Muscles (
-    muscle_id INT NOT NULL,
+    muscle_id INT NOT NULL AUTO_INCREMENT,
     muscle_name VARCHAR(45) NULL,
     PRIMARY KEY (muscle_id));
 `
@@ -32,7 +32,7 @@ db.execute(create_muscle_table_sql);
 
 const create_workouts_table_sql = `
     CREATE TABLE Workouts (
-    workout_id INT NOT NULL,
+    workout_id INT NOT NULL AUTO_INCREMENT,
     workout_name VARCHAR(45) NULL,
     workout_length VARCHAR(45) NULL,
     workout_intensity INT(11) NULL,
@@ -51,7 +51,7 @@ db.execute(create_workouts_table_sql);
 
 const create_user_table_sql = `
     CREATE TABLE Users (
-    usr_id INT NOT NULL,
+    usr_id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(45) NULL,
     usr_height VARCHAR(45) NULL,
     password VARCHAR(45) NULL,

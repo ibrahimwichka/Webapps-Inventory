@@ -37,7 +37,6 @@ app.get("/workouts/:id", (req,res, next) => {
         else if (results.length == 0)
             res.status(404).send(`No workout found with id = "${req.params.id}"` );
         else {
-            
             let data = {workout: results[0]};
             res.render('detail', data); 
         }
@@ -109,18 +108,32 @@ app.get("/workouts/:id/delete", ( req, res ) => {
 
 const create_workout_sql = `
     INSERT INTO Workouts
-    (workout_name, workout_length, workout_intensity, workout_setsreps, muscle_id, workout_description)
+    (workout_name, workout_length, workout_intensity, workout_setsreps, workout_description)
     VALUES
-    (?, ?, ?, ?, ?, ?, ?)
+    (?, ?, ?, ?, ?);
 `
+const create_muscle_sql = `
+    INSERT INTO Muscles
+    (muscle_name)
+    VALUES
+    (?);
+`
+
+
 app.post("/workouts", ( req, res ) => {
-    db.execute(create_workout_sql, [req.body.workout_name, req.body.workout_length, req.body.workout_intensity, req.body.workout_setsreps, req.body.muscle_id, req.body.workout_description], (error, results) => {
+    db.execute(create_muscle_sql, [req.body.muscle], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+    });
+    db.execute(create_workout_sql, [req.body.name, req.body.length, req.body.intensity, req.body.setsreps, req.body.description], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
             res.status(500).send(error); //Internal Server Error
         else {
-            res.redirect(`/workouts/${results.insertId}`);
+            res.redirect("/workouts/${results.insertId}");
         }
     });
 });

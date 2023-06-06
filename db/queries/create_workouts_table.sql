@@ -1,5 +1,5 @@
 CREATE TABLE Workouts (
-    workout_id INT NOT NULL,
+    workout_id INT NOT NULL AUTO_INCREMENT,
     workout_name VARCHAR(45) NULL,
     workout_length VARCHAR(45) NULL,
     workout_intensity INT(11) NULL,
