@@ -15,8 +15,8 @@
     
         <nav>
         <div class="nav-wrapper black">
-            <img id = "home_logo" src = "home_logo.jpg">
-            <a href="index.html" class="brand-logo center">Aerobic Fit</a>
+            <img id = "home_logo" src = "/imgs/home_logo.jpg">
+            <a href="/" class="brand-logo center">Aerobic Fit</a>
             <ul class="right">
                 <li><a href="/" class = "deep-orange-text text-accent-3"><i class="material-icons left">home</i> Home</a></li>
                 <li><a href="/workouts"class = "deep-orange-text text-accent-3" ><i class="material-icons left">assignment</i> Your Workouts</a></li>
@@ -56,7 +56,7 @@
                                     <i class="material-icons right">edit</i>
                                     Info/Edit
                                 </a>
-                                <a class="btn-small waves-effect waves-light deep-purple">
+                                <a class="btn-small waves-effect waves-light deep-purple" href = "/workouts/<%= workouthome[i].workout_id%>/delete">
                                     <i class="material-icons right">delete</i>
                                     Delete
                                 </a>
@@ -71,23 +71,23 @@
         <div class = "modal green lighten-4" id = "add">
             <div class="modal-content">
                 <h3>Add Workout</h3>
-                <form id="updateForm">
+                <form id="updateForm" method = "post" action = "/workouts">
                     <div class="row">
                         <div class="input-field col s8">
                             <i class="material-icons prefix black-text">merge_type</i>
-                            <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value="Name of Workout">
+                            <input type="text" id="nameInput" name="name" class="validate" data-length="45" required value="Name of Workout">
                             <label for="titleInput">Workout Name</label>
                         </div>
                         <div class="input-field col s4">
                             <i class="material-icons prefix black-text">create</i>
-                            <input type="text" id="priorityInput" name="priority" class="validate" min=1 max=10 value= "Length of Workout ">
+                            <input type="text" id="lengthInput" name="length" class="validate" min=1 max=10 value= "Length of Workout ">
                             <label for="priorityInput">Length</label>
                         </div>
     
                         <div class="input-field col s6">
                             <select type="number" id="subjectInput" name="Intensity">
                                 <option value="" disabled>Intensity</option>
-                                <option value=1 selected <% if (workouthome.workout_intensity == 1) { %> selected <% } %>>1</option>
+                                <option value=1 selected>1</option>
                                 <option value=2>2</option>
                                 <option value=3>3</option>
                                 <option value=4>4</option>
@@ -105,6 +105,12 @@
                             <i class="material-icons prefix black-text">chevron_right</i>
                             <input type="text" id="repInput" name="setsreps" value="Sets & Reps">  
                             <label for="priorityInput">Sets:Reps</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix black-text">chevron_right</i>
+                            <input type="text" id="muscleInput" name="muscle" value="Muscle">  
+                            <label for="priorityInput">Muscles</label>
                         </div>
 
                         <div class="input-field col s12">

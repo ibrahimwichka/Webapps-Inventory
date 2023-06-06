@@ -59,14 +59,14 @@
                 <i class="material-icons right">edit</i>
                 Edit
             </a>
-            <a class="btn-large waves-effect waves-light purple ">
+            <a class="btn-large waves-effect waves-light purple" href = "/workouts/<%= workout.workout_id%>/delete">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
             <div class="modal amber lighten-3" id="edit">
                 <div class="modal-content">
                     <h3>Edit item:</h3>
-                    <form id="updateForm">
+                    <form id="updateForm" method = "post" action = "/workouts">
                         <div class="row">
                             <div class="input-field col s8">
                                 <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value= "<%= workout.workout_name %>">

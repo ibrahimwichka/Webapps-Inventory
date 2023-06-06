@@ -11,6 +11,7 @@ app.set( "view engine", "ejs" );
 
 app.use(logger("dev"))
 app.use(express.static(__dirname + '/public'))
+app.use( express.urlencoded({ extended: false }) );
 
 
 
@@ -76,6 +77,54 @@ app.get("/workouts", (req,res) => {
         }
     })
 });
+
+const delete_xref_sql = `
+    DELETE 
+    FROM user_workout_xref
+    Where workout_id = ?
+`
+const delete_workout_sql = `
+    DELETE
+    From Workouts
+    Where workout_id = ?
+`
+
+app.get("/workouts/:id/delete", ( req, res ) => {
+    db.execute(delete_xref_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+    });
+    db.execute(delete_workout_sql, [req.params.id], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect("/workouts");
+        }
+    });
+});
+
+const create_workout_sql = `
+    INSERT INTO Workouts
+    (workout_name, workout_length, workout_intensity, workout_setsreps, muscle_id, workout_description)
+    VALUES
+    (?, ?, ?, ?, ?, ?, ?)
+`
+app.post("/workouts", ( req, res ) => {
+    db.execute(create_workout_sql, [req.body.workout_name, req.body.workout_length, req.body.workout_intensity, req.body.workout_setsreps, req.body.muscle_id, req.body.workout_description], (error, results) => {
+        if (DEBUG)
+            console.log(error ? error : results);
+        if (error)
+            res.status(500).send(error); //Internal Server Error
+        else {
+            res.redirect(`/workouts/${results.insertId}`);
+        }
+    });
+});
+
 
 // start the server
 app.listen(port, () => {
