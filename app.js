@@ -34,7 +34,7 @@ app.get("/workouts/:id", (req,res, next) => {
             console.log(error ? error : results);
         if (error)
             res.status(500).send(error);
-        else if (results.length == 0)
+        if (results.length == 0)
             res.status(404).send(`No workout found with id = "${req.params.id}"` );
         else {
             let data = {workout: results[0]};
@@ -106,34 +106,51 @@ app.get("/workouts/:id/delete", ( req, res ) => {
     });
 });
 
-const create_workout_sql = `
+const create_workout_sql = ` 
     INSERT INTO Workouts
-    (workout_name, workout_length, workout_intensity, workout_setsreps, workout_description)
+    (workout_name, workout_length, workout_intensity, workout_setsreps, muscle_id, workout_description)
     VALUES
-    (?, ?, ?, ?, ?);
+    (?, ?, ?, ?, ?, ?);
+    
 `
-const create_muscle_sql = `
-    INSERT INTO Muscles
-    (muscle_name)
-    VALUES
-    (?);
+
+const update_workout_sql = `
+UPDATE
+Workouts
+SET
+workout_name = ?,
+workout_length = ?,
+workout_intensity= ?,
+workout_setsreps = ?,
+muscle_id = ?,
+workout_description = ?
+WHERE
+workout_id = ?
 `
+
 
 
 app.post("/workouts", ( req, res ) => {
-    db.execute(create_muscle_sql, [req.body.muscle], (error, results) => {
+    db.execute(create_workout_sql, [req.body.name, req.body.length, req.body.intensity, req.body.setsreps, req.body.muscle, req.body.description], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
             res.status(500).send(error); //Internal Server Error
+        
+        else {
+            res.redirect(`/workouts/${results.insertId}`);
+        }
     });
-    db.execute(create_workout_sql, [req.body.name, req.body.length, req.body.intensity, req.body.setsreps, req.body.description], (error, results) => {
+});
+
+app.post("/workouts/:id", ( req, res ) => {
+    db.execute(update_workout_sql, [req.body.name2, req.body.length2, req.body.intensity2, req.body.setsreps2, req.body.muscle2, req.body.description2, req.params.id], (error, results) => {
         if (DEBUG)
             console.log(error ? error : results);
         if (error)
             res.status(500).send(error); //Internal Server Error
         else {
-            res.redirect("/workouts/${results.insertId}");
+            res.redirect(`/workouts/${req.params.id}`);
         }
     });
 });

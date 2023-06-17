@@ -66,19 +66,19 @@
             <div class="modal amber lighten-3" id="edit">
                 <div class="modal-content">
                     <h3>Edit item:</h3>
-                    <form id="updateForm" method = "post" action = "/workouts">
+                    <form id="updateForm" method = "post" action = "/workouts/<%= workout.workout_id %>">
                         <div class="row">
                             <div class="input-field col s8">
-                                <input type="text" id="titleInput" name="title" class="validate" data-length="45" required value= "<%= workout.workout_name %>">
+                                <input type="text" id="titleInput" name="name2" class="validate" data-length="45" required value= "<%= workout.workout_name %>">
                                 <label for="titleInput">Workout Name</label>
                             </div>
                             <div class="input-field col s4">
-                                <input type="text" id="priorityInput" name="priority" class="validate" min=1 max=10 value= "<%= workout.workout_length%>">
+                                <input type="text" id="priorityInput" name="length2" class="validate" min=1 max=10 value= "<%= workout.workout_length%>">
                                 <label for="priorityInput">Length</label>
                             </div>
         
                             <div class="input-field col s6">
-                                <select type="number" id="subjectInput" name="Intensity">
+                                <select type="number" id="subjectInput" name="intensity2">
                                     <option value="" disabled>Intensity</option>
                                     <option value=1 <% if (workout.workout_intensity == 1) { %> selected <% } %>>1</option>
                                     <option value=2 <% if (workout.workout_intensity == 2) { %> selected <% } %>>2</option>
@@ -95,12 +95,17 @@
                             </div>
         
                             <div class="input-field col s6">
-                                <input type="text" id="repInput" name="setsreps" value="<%= workout.workout_setsreps %>">  
+                                <input type="text" id="repInput" name="setsreps2" value="<%= workout.workout_setsreps %>">  
                                 <label for="priorityInput">Sets:Reps</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix black-text">chevron_right</i>
+                                <input type="text" id="muscleInput" name="muscle2" value="1">  
+                                <label for="priorityInput">Muscle ID</label>
                             </div>
     
                             <div class="input-field col s12">
-                                <textarea class="materialize-textarea" id="descriptionInput" name="description" data-length="150"> <%= workout.workout_description %> </textarea>
+                                <textarea class="materialize-textarea" id="descriptionInput" name="description2" data-length="150"> <%= workout.workout_description %> </textarea>
                                 <label for="descriptionInput"> Description </label>
                             </div>
         
